@@ -1,177 +1,379 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portofolio Angga Ariya Saputra - Full Stack Web Developer dari SMKN 1 Lumajang.">
-    <meta name="keywords"
-        content="web developer, fullstack, PHP, HTML, CSS, JavaScript, Web3, Blockchain, Hardhat, Node.js, portfolio">
+    <meta name="description" content="Angga Ariya Saputra — Full Stack Web Developer. Crafting elegant digital experiences with clean code and modern technology.">
+    <meta name="keywords" content="web developer, full stack, PHP, HTML, CSS, JavaScript, Web3, Blockchain, Node.js, portfolio">
     <meta name="author" content="Angga Ariya Saputra">
-    <title>Angga Ariya Saputra | Full Stack Developer</title>
+    <title>Angga Ariya Saputra — Full Stack Developer</title>
+
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+
+    <!-- Cormorant Garamond + Cormorant SC + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header" id="header">
+    <!-- ===== CUSTOM CURSOR ===== -->
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!-- ===== HEADER / NAVIGATION ===== -->
+    <header class="header" id="header" role="banner">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-code"></i>
-                AryaTales
+            <a href="#" class="logo" id="logoHome" aria-label="Angga Ariya Saputra — Home">
+                A · A · S
             </a>
-            <nav>
+
+            <nav role="navigation" aria-label="Primary navigation">
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="#tentang" class="nav-link">Tentang</a></li>
-                    <li><a href="#proyek" class="nav-link">Proyek</a></li>
-                    <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                    <li><a href="#about"    class="nav-link" id="navAbout">About</a></li>
+                    <li><a href="#work"     class="nav-link" id="navWork">Work</a></li>
+                    <li><a href="#contact"  class="nav-link" id="navContact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
         </div>
     </header>
 
     <!-- ===== HERO ===== -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Angga Ariya Saputra</h1>
-            <p>Full Stack Web Developer | Siswa RPL SMKN 1 Lumajang</p>
+    <section class="hero" aria-label="Introduction">
+        <div class="hero-frieze" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+            <p class="hero-eyebrow">Full Stack Web Developer</p>
+
+            <h1>
+                Angga<br>
+                <em>Ariya</em><br>
+                Saputra
+            </h1>
+
+            <div class="hero-ornament" aria-hidden="true">
+                <div class="hero-ornament-line"></div>
+                <div class="hero-ornament-center">
+                    <div class="hero-ornament-dot"></div>
+                    <div class="hero-ornament-dot lg"></div>
+                    <div class="hero-ornament-dot"></div>
+                </div>
+                <div class="hero-ornament-line right"></div>
+            </div>
+
+            <p class="hero-subtitle">Crafting Elegant Digital Experiences</p>
+
             <div class="hero-buttons">
-                <a href="#proyek" class="btn btn-primary" id="btnViewProjects">
-                    <i class="fas fa-eye"></i>
-                    Lihat Proyek
+                <a href="#work" class="btn btn-primary" id="btnViewWork">
+                    View Work
                 </a>
-                <a href="#kontak" class="btn btn-outline" id="btnContact">
-                    <i class="fas fa-envelope"></i>
-                    Hubungi Saya
+                <a href="#contact" class="btn btn-ghost" id="btnGetInTouch">
+                    Get in Touch
                 </a>
             </div>
         </div>
+
+        <div class="hero-scroll" aria-hidden="true">
+            <span class="hero-scroll-text">Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
     </section>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="main">
+    <!-- ===== MAIN ===== -->
+    <main id="main-content">
 
-        <!-- Tentang Saya -->
-        <section id="tentang" class="section">
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="section about" aria-label="About">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2>Tentang Saya</h2>
-                    <p>Pelajar yang passionate dalam dunia web development</p>
-                </div>
-                <div class="about-content">
-                    <div class="about-image fade-in">
-                        <div class="profile-placeholder">
-                            <i class="fas fa-user-astronaut"></i>
+
+                <div class="about-grid">
+
+                    <!-- Portrait -->
+                    <div class="reveal-left">
+                        <div class="portrait-wrapper">
+                            <div class="portrait-frame">
+                                <div class="portrait-corner tl" aria-hidden="true"></div>
+                                <div class="portrait-corner tr" aria-hidden="true"></div>
+                                <div class="portrait-corner bl" aria-hidden="true"></div>
+                                <div class="portrait-corner br" aria-hidden="true"></div>
+                                <img src="profile.png"
+                                     alt="Angga Ariya Saputra — Full Stack Developer"
+                                     onerror="this.style.display='none';this.parentElement.querySelector('.portrait-placeholder').style.display='flex'">
+                                <div class="portrait-placeholder" aria-hidden="true" style="display:none; width:100%; height:100%; background:#e5e5e5; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="40" cy="28" r="16" fill="#9a9a9a"/>
+                                        <path d="M8 72c0-17.673 14.327-32 32-32s32 14.327 32 32" fill="#9a9a9a"/>
+                                    </svg>
+                                    <span style="font-family:'Cormorant SC',serif; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#9a9a9a;">Portrait</span>
+                                </div>
+                            </div>
+                            <div class="portrait-caption">
+                                <div class="ornament">
+                                    <div class="ornament-line"></div>
+                                    <div class="ornament-diamond sm" aria-hidden="true"></div>
+                                    <div class="ornament-line right"></div>
+                                </div>
+                                <span class="portrait-caption-text">SMKN 1 Lumajang — RPL</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="about-text fade-in fade-in-delay-1">
-                        <h3>Hello, Saya Angga!</h3>
-                        <p>
-                            Saya adalah siswa di SMKN 1 Lumajang jurusan Rekayasa Perangkat Lunak (RPL) yang memiliki
-                            passion mendalam dalam pengembangan web dan aplikasi.
-                            Saya selalu antusias mempelajari teknologi terbaru dan menerapkannya dalam proyek-proyek
-                            yang saya kerjakan.
+
+                    <!-- Content -->
+                    <div class="about-content-area reveal-right">
+                        <span class="section-label">About the Developer</span>
+
+                        <h2>Crafting the<br><em>web with precision</em><br>and purpose</h2>
+
+                        <div class="ornament" style="justify-content:flex-start; margin:1.5rem 0 2rem;">
+                            <div class="ornament-line"></div>
+                            <div class="ornament-diamond sm" aria-hidden="true"></div>
+                        </div>
+
+                        <p class="about-body">
+                            I am a student at SMKN 1 Lumajang, majoring in Software Engineering (RPL), 
+                            with a deep passion for web development and modern technology. I approach 
+                            every project with a commitment to craftsmanship — clean architecture, 
+                            elegant interfaces, and performant code.
                         </p>
-                        <p>
-                            Dengan fokus pada full-stack development, saya terus mengasah kemampuan dalam membangun
-                            aplikasi berbasis web yang modern dan user-friendly.
-                            Saya percaya bahwa teknologi dapat memberikan solusi untuk berbagai masalah di kehidupan
-                            sehari-hari.
+                        <p class="about-body">
+                            Specialising in full-stack development, I continually refine my expertise 
+                            in building sophisticated, user-centred web applications. I believe that 
+                            technology, when thoughtfully applied, can provide meaningful solutions 
+                            to real-world challenges.
                         </p>
-                        <div class="skills">
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">PHP</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">Git</span>
+
+                        <!-- Skills Grid -->
+                        <div class="skills-grid" role="list" aria-label="Technical skills">
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">HTML 5</span>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">CSS 3</span>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">PHP</span>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">MySQL</span>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">Node.js</span>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">Git</span>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-dot" aria-hidden="true"></div>
+                                <span class="skill-name">Linux</span>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Proyek -->
-        <section id="proyek" class="section projects-section">
+        <!-- ===== STATISTICS STRIP ===== -->
+        <div class="stats-strip" aria-label="Statistics">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2>Proyek Saya</h2>
-                    <p>Beberapa proyek yang telah saya kerjakan</p>
+                <div class="stats-grid">
+                    <div class="stat-item reveal">
+                        <span class="stat-number" data-target="1">0</span>
+                        <span class="stat-label">Projects Delivered</span>
+                    </div>
+                    <div class="stat-item reveal reveal-delay-2">
+                        <span class="stat-number" data-target="7">0</span>
+                        <span class="stat-label">Technologies Mastered</span>
+                    </div>
+                    <div class="stat-item reveal reveal-delay-4">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Passion for Craft</span>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- ===== WORK / PROJECTS ===== -->
+        <section id="work" class="section projects" aria-label="Selected Work">
+            <div class="container">
+
+                <div class="section-header reveal">
+                    <span class="section-label">Selected Work</span>
+                    <h2 class="section-title">
+                        Projects &amp; <em>Endeavours</em>
+                    </h2>
+                    <div class="ornament" style="margin-top:1.5rem;">
+                        <div class="ornament-line"></div>
+                        <div class="ornament-diamond sm" aria-hidden="true"></div>
+                        <div class="ornament-line right"></div>
+                    </div>
+                </div>
+
                 <div class="projects-grid">
-                    <div class="card project-card fade-in">
-                        <div class="project-image">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>Web3 Cloud Storage Local</h3>
-                        <p>Penyimpanan cloud terdesentralisasi berbasis blockchain lokal dengan Node.js dan Hardhat.
-                            Menggunakan currency symbol CLD sebagai biaya transaksi.</p>
-                        <div class="project-links">
-                            <a href="https://aryadevweb.github.io/web3_cloud_storage/" class="project-link"
-                                target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                                Lihat Proyek
+
+                    <!-- Project 01 -->
+                    <article class="project-card reveal" aria-label="Project: Web3 Cloud Storage Local">
+                        <div class="project-inner">
+                            <div class="project-number" aria-hidden="true">01</div>
+                            <span class="project-meta">2025 — Blockchain / Web3</span>
+                            <h3 class="project-title">Web3 Cloud Storage Local</h3>
+                            <p class="project-description">
+                                A decentralised cloud storage solution built on a local blockchain 
+                                using Node.js and Hardhat. Features a custom currency (CLD) for 
+                                transaction fees, providing a fully autonomous file management 
+                                ecosystem independent of centralised cloud providers.
+                            </p>
+                            <div class="project-tags" aria-label="Technologies used">
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">Hardhat</span>
+                                <span class="project-tag">Solidity</span>
+                                <span class="project-tag">Web3</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="https://aryadevweb.github.io/web3_cloud_storage/"
+                               class="project-link"
+                               id="projectWeb3Link"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="View Web3 Cloud Storage project">
+                                <span class="project-link-text">View Project</span>
+                                <div class="project-link-arrow" aria-hidden="true">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
                             </a>
                         </div>
-                    </div>
-                    <div class="card project-card fade-in fade-in-delay-1">
-                        <div class="project-image">
-                            <i class="fas fa-mobile-alt"></i>
+                    </article>
+
+                    <!-- Project 02 -->
+                    <article class="project-card reveal reveal-delay-2" aria-label="Project: In Development">
+                        <div class="project-inner">
+                            <div class="project-number" aria-hidden="true">02</div>
+                            <span class="project-meta">2026 — In Development</span>
+                            <h3 class="project-title">Coming Soon</h3>
+                            <p class="project-description">
+                                A new project currently in the design and development phase. 
+                                Exploring new frontiers of web technology with a focus on 
+                                performance, aesthetics, and meaningful user experience. 
+                                Stay tuned for the reveal.
+                            </p>
+                            <div class="project-tags" aria-label="Technologies used">
+                                <span class="project-tag">In Progress</span>
+                                <span class="project-tag">TBA</span>
+                            </div>
+                            <div class="project-link" aria-label="Project in development" style="opacity:0.5; cursor:default;">
+                                <span class="project-link-text">In Development</span>
+                                <div class="project-link-arrow" aria-hidden="true">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Coming Soon</h3>
-                        <p>Proyek baru sedang dalam tahap pengembangan. Stay tuned untuk update terbaru!</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-clock"></i>
-                                In Development
-                            </a>
-                        </div>
-                    </div>
+                    </article>
+
                 </div>
+
             </div>
         </section>
 
-        <!-- Kontak -->
-        <section id="kontak" class="section contact">
+        <!-- ===== CONTACT ===== -->
+        <section id="contact" class="section contact" aria-label="Contact">
             <div class="container">
-                <div class="section-title fade-in">
-                    <h2>Hubungi Saya</h2>
-                    <p>Mari berkolaborasi dan wujudkan ide-ide kreatif bersama</p>
-                </div>
-                <div class="contact-content centered fade-in fade-in-delay-1">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>angga.ariya.dev@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Lokasi</h4>
-                                <p>Lumajang, Jawa Timur, Indonesia</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Sekolah</h4>
-                                <p>SMKN 1 Lumajang - RPL</p>
-                            </div>
+                <div class="contact-inner">
+
+                    <!-- Left: CTA -->
+                    <div class="reveal-left">
+                        <span class="section-label" style="color:#6b6b6b;">Let's Collaborate</span>
+                        <h2 class="contact-headline">
+                            Begin a <em>conversation</em>
+                        </h2>
+                        <p class="contact-tagline">
+                            Whether you have a project in mind, a question to ask, 
+                            or simply wish to connect — I would be delighted to hear from you.
+                        </p>
+                        <div class="contact-btn-wrap">
+                            <a href="mailto:angga.ariya.dev@gmail.com"
+                               class="btn btn-primary"
+                               id="btnEmailDirect"
+                               aria-label="Send an email">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                Send a Message
+                            </a>
+                            <a href="https://github.com/aryadevweb"
+                               class="btn btn-outline-dark"
+                               style="border-color:rgba(255,255,255,0.2); color:#9a9a9a;"
+                               id="btnGithubProfile"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="View GitHub profile">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                                GitHub
+                            </a>
                         </div>
                     </div>
+
+                    <!-- Right: Contact Details -->
+                    <div class="contact-details reveal-right">
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon" aria-hidden="true">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="contact-item-label">Electronic Mail</span>
+                                <a href="mailto:angga.ariya.dev@gmail.com"
+                                   class="contact-item-value"
+                                   id="contactEmailLink"
+                                   style="text-decoration:none; color:inherit; transition: color 0.4s ease;">
+                                    angga.ariya.dev@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon" aria-hidden="true">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <span class="contact-item-label">Location</span>
+                                <span class="contact-item-value">Lumajang, East Java, Indonesia</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon" aria-hidden="true">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <span class="contact-item-label">Education</span>
+                                <span class="contact-item-value">SMKN 1 Lumajang — RPL</span>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -179,18 +381,36 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/aryadevweb" class="social-link" target="_blank" rel="noopener noreferrer"
-                    aria-label="GitHub">
-                    <i class="fab fa-github"></i>
+            <div class="footer-inner">
+
+                <a href="#" class="footer-logo" id="footerLogoHome" aria-label="Back to top">
+                    A · A · S
                 </a>
-                <a href="mailto:angga.ariya.dev@gmail.com" class="social-link" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
+
+                <p class="footer-copy">
+                    &copy; 2026 Angga Ariya Saputra. All Rights Reserved.
+                </p>
+
+                <div class="social-links" aria-label="Social media links">
+                    <a href="https://github.com/aryadevweb"
+                       class="social-link"
+                       id="footerGithub"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="GitHub Profile">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:angga.ariya.dev@gmail.com"
+                       class="social-link"
+                       id="footerEmail"
+                       aria-label="Send Email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </div>
+
             </div>
-            <p>&copy; 2026 Angga Ariya Saputra. Dibuat dengan HTML &amp; CSS.</p>
         </div>
     </footer>
 
