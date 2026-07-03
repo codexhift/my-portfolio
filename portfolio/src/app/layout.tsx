@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: 'Angga Ariya Saputra | Full Stack Developer',
     description: 'Elegant digital experiences crafted with clean code and modern technology.',
     type: 'website',
-    images: ['/profile.png'],
+    images: ['/profile.jpg'],
   },
 };
 

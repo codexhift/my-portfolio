@@ -3,104 +3,125 @@
 import { motion } from 'framer-motion';
 import Ornament from '@/components/ui/Ornament';
 import { heroText } from '@/lib/animations';
-import { personal } from '@/lib/data';
 
 export default function Hero() {
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[--ink] px-5 pb-16 pt-24 text-center"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[--ivory] px-5 pb-24 pt-24 text-center"
       aria-label="Introduction"
     >
-      <div className="hero-grid absolute inset-0" aria-hidden="true" />
-      <div className="absolute inset-x-8 top-24 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      <div className="absolute inset-y-24 left-5 hidden w-px bg-gradient-to-b from-transparent via-white/10 to-transparent md:block" />
-      <div className="absolute inset-y-24 right-5 hidden w-px bg-gradient-to-b from-transparent via-white/10 to-transparent md:block" />
+      {/* Subtle editorial dot grid */}
+      <div
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(circle, var(--ink) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+        aria-hidden="true"
+      />
 
-      <div className="relative z-10 w-full max-w-6xl">
+      {/* Structural lines */}
+      <div className="absolute inset-x-8 top-24 h-px bg-[--pearl] opacity-40" />
+      <div className="absolute inset-y-24 left-12 hidden w-px bg-[--pearl] opacity-25 md:block" />
+      <div className="absolute inset-y-24 right-12 hidden w-px bg-[--pearl] opacity-25 md:block" />
+
+      <div className="relative z-10 w-full max-w-7xl">
+
+        {/* ── Profession Label ── */}
         <motion.p
           variants={heroText}
           custom={0.08}
           initial="hidden"
           animate="visible"
-          className="mb-8 font-cormorant-sc text-[0.66rem] uppercase tracking-[0.36em] text-[--silver] sm:mb-10"
+          className="mb-10 font-cormorant-sc text-[0.67rem] font-semibold uppercase tracking-[0.46em] text-[--ash]"
         >
-          {personal.title}
+          Full Stack • Web3
         </motion.p>
 
-        <div className="overflow-hidden">
+        {/* ── Hero Name Typography ── */}
+        <div className="overflow-visible mb-10">
           <motion.h1
             variants={heroText}
             custom={0.25}
             initial="hidden"
             animate="visible"
-            className="font-cormorant text-[clamp(3.6rem,12vw,8.7rem)] font-light leading-[0.94] text-white"
+            className="font-cormorant tracking-[-0.01em]"
+            aria-label="Angga Arya Saputra"
           >
-            Angga
-            <br />
-            <em className="font-light italic">Ariya</em>
-            <br />
-            Saputra
+
+            {/* ─────────────────────────────────────────────────────────
+                MOBILE & TABLET  (< lg)
+                Line 1: "Angga Arya"   Line 2: "Saputra"
+                ───────────────────────────────────────────────────────── */}
+            <span className="block lg:hidden leading-[1.04]">
+              {/* Line 1 */}
+              <span className="block text-[clamp(3rem,11.5vw,5.2rem)] font-extralight tracking-tight text-[--ash]">
+                Angga{' '}
+                <span className="name-gradient-mask font-semibold italic tracking-normal">
+                  Arya
+                </span>
+              </span>
+              {/* Line 2 */}
+              <span className="block text-[clamp(3rem,11.5vw,5.2rem)] font-extralight tracking-tight text-[--ash] mt-0.5">
+                Saputra
+              </span>
+            </span>
+
+            {/* ─────────────────────────────────────────────────────────
+                DESKTOP & LAPTOP  (lg+)
+                Single line: "Angga Arya Saputra"
+                Uses whitespace-nowrap + vw sizing so it never wraps.
+                ───────────────────────────────────────────────────────── */}
+            <span
+              className="hidden lg:block whitespace-nowrap leading-[1.02]"
+              style={{ fontSize: 'clamp(4rem, 5.6vw, 8rem)' }}
+            >
+              <span className="font-extralight tracking-tight text-[--ash]">Angga </span>
+              <span className="name-gradient-mask font-semibold italic tracking-normal">Arya</span>
+              <span className="font-extralight tracking-tight text-[--ash]"> Saputra</span>
+            </span>
+
           </motion.h1>
         </div>
 
+        {/* ── Ornament divider ── */}
         <motion.div
           variants={heroText}
-          custom={0.55}
+          custom={0.5}
           initial="hidden"
           animate="visible"
-          className="my-8 sm:my-10"
+          className="mt-10"
         >
-          <Ornament color="rgba(229,229,229,0.38)" lineWidth={86} />
+          <Ornament color="var(--pearl)" lineWidth={100} />
         </motion.div>
 
-        <motion.p
-          variants={heroText}
-          custom={0.7}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto mb-10 max-w-xl font-cormorant-sc text-[0.7rem] uppercase tracking-[0.26em] text-[--ash] sm:tracking-[0.34em]"
-        >
-          {personal.subtitle}
-        </motion.p>
-
-        <motion.div
-          variants={heroText}
-          custom={0.9}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4"
-        >
-          <a
-            href="#work"
-            className="inline-flex min-h-12 items-center justify-center border border-white bg-white px-7 py-4 font-cormorant-sc text-[0.66rem] uppercase tracking-[0.24em] text-[--ink] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(0,0,0,0.45)]"
-          >
-            View Work
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex min-h-12 items-center justify-center border border-white/20 px-7 py-4 font-cormorant-sc text-[0.66rem] uppercase tracking-[0.24em] text-[--silver] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:text-white"
-          >
-            Get in Touch
-          </a>
-        </motion.div>
       </div>
 
-      <motion.div
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
+      {/* ── Elegant Scroll Indicator ── */}
+      <motion.button
+        type="button"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer bg-transparent border-none outline-none group"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.35, duration: 0.7 }}
-        aria-hidden="true"
+        transition={{ delay: 1.0, duration: 0.8 }}
+        onClick={() => {
+          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+        aria-label="Scroll to About section"
       >
-        <span className="font-cormorant-sc text-[0.58rem] uppercase tracking-[0.3em] text-[--ash]">
+        <span className="font-cormorant-sc text-[0.58rem] font-medium uppercase tracking-[0.36em] text-[--ash] transition-colors duration-300 group-hover:text-[--ink]">
           Scroll
         </span>
-        <motion.div
-          className="w-px bg-gradient-to-b from-[--ash] to-transparent"
-          animate={{ height: [34, 58, 34] }}
-          transition={{ duration: 2.1, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </motion.div>
+        {/* Animated line with sliding dash */}
+        <div className="relative w-[1px] h-14 bg-[--pearl] overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-0 w-full h-5 bg-[--ink]/30"
+            animate={{ y: [0, 36, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+      </motion.button>
+
     </section>
   );
 }

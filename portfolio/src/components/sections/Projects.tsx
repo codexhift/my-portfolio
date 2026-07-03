@@ -43,8 +43,19 @@ export default function Projects() {
 }
 
 function ProjectCard({ project, index, inView }: { project: Project; index: number; inView: boolean }) {
-  const content = (
-    <>
+  const className = `group relative min-h-[560px] overflow-hidden p-7 sm:p-9 md:p-11 ${
+    index % 2 === 0 ? 'md:border-r md:border-[--pearl]' : ''
+  } ${index < projects.length - 1 ? 'border-b border-[--pearl] md:border-b-0' : ''}`;
+
+  return (
+    <motion.article
+      variants={staggerItem}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      transition={{ delay: index * 0.12 }}
+      className={className}
+      aria-label={project.title}
+    >
       <motion.div
         className="project-card-fill"
         initial={{ scaleY: 0 }}
@@ -54,19 +65,19 @@ function ProjectCard({ project, index, inView }: { project: Project; index: numb
       />
 
       <div className="relative z-10 flex h-full flex-col">
-        <span className="mb-8 font-cormorant text-[5.3rem] font-light leading-none text-[--pearl] transition-colors duration-500 group-hover:text-white/20">
+        <span className="mb-8 font-cormorant text-[5.3rem] font-light leading-none text-[--pearl] transition-colors duration-500 group-hover:text-[--silver]">
           {project.id}
         </span>
 
-        <span className="mb-3 font-cormorant-sc text-[0.6rem] uppercase tracking-[0.22em] text-[--silver] transition-colors duration-500 group-hover:text-white/55">
+        <span className="mb-3 font-cormorant-sc text-[0.6rem] uppercase tracking-[0.22em] text-[--silver] transition-colors duration-500 group-hover:text-[--platinum]">
           {project.year} / {project.category}
         </span>
 
-        <h3 className="mb-4 font-cormorant text-[2rem] font-light leading-[1.12] text-[--ink] transition-colors duration-500 group-hover:text-white">
+        <h3 className="mb-4 font-cormorant text-[2rem] font-light leading-[1.12] text-[--ink] transition-colors duration-500 group-hover:text-[--platinum]">
           {project.title}
         </h3>
 
-        <p className="mb-7 flex-grow font-inter text-[0.92rem] font-light leading-[1.85] text-[--ash] transition-colors duration-500 group-hover:text-white/68">
+        <p className="mb-7 flex-grow font-inter text-[0.92rem] font-light leading-[1.85] text-[--ash] transition-colors duration-500 group-hover:text-[--platinum]">
           {project.description}
         </p>
 
@@ -74,66 +85,30 @@ function ProjectCard({ project, index, inView }: { project: Project; index: numb
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="border border-[--pearl] px-3 py-1.5 font-cormorant-sc text-[0.56rem] uppercase tracking-[0.18em] text-[--silver] transition-all duration-500 group-hover:border-white/15 group-hover:text-white/55"
+              className="border border-[--pearl] rounded-[3px] px-3 py-1.5 font-cormorant-sc text-[0.56rem] uppercase tracking-[0.18em] text-[--silver] transition-all duration-500 group-hover:border-[--ash] group-hover:text-[--platinum]"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="mt-auto flex items-center gap-4">
-          <span className="font-cormorant-sc text-[0.64rem] uppercase tracking-[0.25em] text-[--smoke] transition-colors duration-500 group-hover:text-white/75">
-            {project.live ? 'View Project' : 'In Development'}
-          </span>
-          <span className="flex h-10 w-10 items-center justify-center border border-[--pearl] text-[--smoke] transition-all duration-500 group-hover:border-white group-hover:bg-white group-hover:text-[--ink]">
-            {project.live ? (
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <div className="mt-auto flex flex-wrap items-center gap-4">
+          {project.links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-[--pearl] bg-transparent rounded-[6px] px-4 py-2 font-cormorant-sc text-[0.6rem] uppercase tracking-[0.22em] text-[--smoke] transition-all duration-300 hover:border-[--platinum] hover:bg-[--platinum] hover:text-[--ink] group-hover:text-[--platinum] group-hover:border-[--ash] group-hover:hover:border-[--platinum] group-hover:hover:bg-[--platinum] group-hover:hover:text-[--ink]"
+            >
+              <span>{link.label}</span>
+              <svg width="10" height="10" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" strokeWidth="1" />
               </svg>
-            ) : (
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1" />
-                <path d="M7 3.8V7L9.2 9.1" stroke="currentColor" strokeWidth="1" />
-              </svg>
-            )}
-          </span>
+            </a>
+          ))}
         </div>
       </div>
-    </>
-  );
-
-  const className = `group relative min-h-[560px] overflow-hidden p-7 sm:p-9 md:p-11 ${
-    index % 2 === 0 ? 'md:border-r md:border-[--pearl]' : ''
-  } ${index < projects.length - 1 ? 'border-b border-[--pearl] md:border-b-0' : ''}`;
-
-  if (project.live) {
-    return (
-      <motion.a
-        href={project.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        variants={staggerItem}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-        transition={{ delay: index * 0.12 }}
-        className={`${className} block no-underline`}
-        aria-label={`View ${project.title}`}
-      >
-        {content}
-      </motion.a>
-    );
-  }
-
-  return (
-    <motion.article
-      variants={staggerItem}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      transition={{ delay: index * 0.12 }}
-      className={className}
-      aria-label={`${project.title}, in development`}
-    >
-      {content}
     </motion.article>
   );
 }

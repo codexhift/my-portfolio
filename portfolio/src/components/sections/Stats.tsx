@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { stats } from '@/lib/data';
-import { fadeUp, stagger, staggerItem } from '@/lib/animations';
+import { staggerChildren, staggerItem } from '@/lib/animations';
 
 export default function Stats() {
   const ref = useRef(null);
@@ -17,7 +17,7 @@ export default function Stats() {
     >
       <div className="max-w-[1320px] mx-auto px-6 md:px-12">
         <motion.div
-          variants={stagger}
+          variants={staggerChildren}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 md:grid-cols-3"
@@ -30,7 +30,7 @@ export default function Stats() {
                 i < stats.length - 1 ? 'border-b md:border-b-0 md:border-r border-[--iron]' : ''
               }`}
             >
-              <span className="font-cormorant font-light text-[clamp(2.5rem,4vw,3.5rem)] text-white leading-none block mb-2">
+              <span className="font-cormorant font-light text-[clamp(2.5rem,4vw,3.5rem)] text-[--platinum] leading-none block mb-2">
                 {stat.value}
               </span>
               <span className="font-cormorant-sc text-[0.62rem] tracking-[0.3em] uppercase text-[--ash]">

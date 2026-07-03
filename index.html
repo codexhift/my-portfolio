@@ -33,7 +33,7 @@
     <header class="header" id="header" role="banner">
         <div class="nav-container">
             <a href="#" class="logo" id="logoHome" aria-label="Angga Ariya Saputra — Home">
-                A · A · S
+                AryaTales
             </a>
 
             <nav role="navigation" aria-label="Primary navigation">
@@ -97,46 +97,15 @@
     <main id="main-content">
 
         <!-- ===== ABOUT ===== -->
-        <section id="about" class="section about" aria-label="About">
+        <section id="about" class="section about" aria-label="Engineering philosophy">
             <div class="container">
 
                 <div class="about-grid">
-
-                    <!-- Portrait -->
-                    <div class="reveal-left">
-                        <div class="portrait-wrapper">
-                            <div class="portrait-frame">
-                                <div class="portrait-corner tl" aria-hidden="true"></div>
-                                <div class="portrait-corner tr" aria-hidden="true"></div>
-                                <div class="portrait-corner bl" aria-hidden="true"></div>
-                                <div class="portrait-corner br" aria-hidden="true"></div>
-                                <img src="profile.png"
-                                     alt="Angga Ariya Saputra — Full Stack Developer"
-                                     onerror="this.style.display='none';this.parentElement.querySelector('.portrait-placeholder').style.display='flex'">
-                                <div class="portrait-placeholder" aria-hidden="true" style="display:none; width:100%; height:100%; background:#e5e5e5; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
-                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="40" cy="28" r="16" fill="#9a9a9a"/>
-                                        <path d="M8 72c0-17.673 14.327-32 32-32s32 14.327 32 32" fill="#9a9a9a"/>
-                                    </svg>
-                                    <span style="font-family:'Cormorant SC',serif; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#9a9a9a;">Portrait</span>
-                                </div>
-                            </div>
-                            <div class="portrait-caption">
-                                <div class="ornament">
-                                    <div class="ornament-line"></div>
-                                    <div class="ornament-diamond sm" aria-hidden="true"></div>
-                                    <div class="ornament-line right"></div>
-                                </div>
-                                <span class="portrait-caption-text">SMKN 1 Lumajang — RPL</span>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Content -->
                     <div class="about-content-area reveal-right">
                         <span class="section-label">About the Developer</span>
 
-                        <h2>Crafting the<br><em>web with precision</em><br>and purpose</h2>
+                        <h2>Engineering with<br><em>clarity and intention.</em></h2>
 
                         <div class="ornament" style="justify-content:flex-start; margin:1.5rem 0 2rem;">
                             <div class="ornament-line"></div>
@@ -144,51 +113,41 @@
                         </div>
 
                         <p class="about-body">
-                            I am a student at SMKN 1 Lumajang, majoring in Software Engineering (RPL), 
-                            with a deep passion for web development and modern technology. I approach 
-                            every project with a commitment to craftsmanship — clean architecture, 
-                            elegant interfaces, and performant code.
-                        </p>
-                        <p class="about-body">
-                            Specialising in full-stack development, I continually refine my expertise 
-                            in building sophisticated, user-centred web applications. I believe that 
-                            technology, when thoughtfully applied, can provide meaningful solutions 
-                            to real-world challenges.
+                            I build software around mature architecture, deliberate details, and long-term maintainability.
+                            The work is guided by performance, security, and clean systems that stay understandable as they scale.
                         </p>
 
-                        <!-- Skills Grid -->
-                        <div class="skills-grid" role="list" aria-label="Technical skills">
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">HTML 5</span>
+                        <div class="principles-block">
+                            <span class="about-subsection-label">Core Principles</span>
+                            <div class="principles-grid">
+                                <article class="principle-item">
+                                    <h3>Craftsmanship</h3>
+                                    <p>Every interface and system boundary is shaped with discipline, restraint, and care for the smallest details.</p>
+                                </article>
+                                <article class="principle-item">
+                                    <h3>Performance</h3>
+                                    <p>Architecture should feel fast by design, from lean client experiences to efficient backend execution paths.</p>
+                                </article>
+                                <article class="principle-item">
+                                    <h3>Security</h3>
+                                    <p>Reliable software treats trust as a first-class concern through clear permissions, safe defaults, and resilient data flow.</p>
+                                </article>
                             </div>
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">CSS 3</span>
-                            </div>
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">JavaScript</span>
-                            </div>
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">PHP</span>
-                            </div>
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">MySQL</span>
-                            </div>
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">Node.js</span>
-                            </div>
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">Git</span>
-                            </div>
-                            <div class="skill-item" role="listitem">
-                                <div class="skill-dot" aria-hidden="true"></div>
-                                <span class="skill-name">Linux</span>
+                        </div>
+
+                        <div class="technologies-block">
+                            <span class="about-subsection-label">Technologies I Work With</span>
+                            <div class="technology-list" aria-label="Selected technologies">
+                                <span>Laravel</span>
+                                <span>Node.js</span>
+                                <span>React</span>
+                                <span>Next.js</span>
+                                <span>TypeScript</span>
+                                <span>PostgreSQL</span>
+                                <span>Redis</span>
+                                <span>Solidity</span>
+                                <span>Tailwind CSS</span>
+                                <span>Linux</span>
                             </div>
                         </div>
                     </div>
