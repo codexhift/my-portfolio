@@ -2,7 +2,7 @@
 
 export const personal = {
   name: 'Angga Ariya Saputra',
-  nameShort: 'A · A · S',
+  brandingName: 'codexhift',
   title: 'Full Stack Engineer & Web3 Developer',
   subtitle: 'Architecting secure digital infrastructures and high-throughput systems.',
   bio1: `I am a Software Engineering (RPL) student at SMKN 1 Lumajang and a Full Stack Developer, specialising in building secure, high-performance web applications and decentralized protocols. Guided by a philosophy of strict craftsmanship, I design low-latency API architectures, robust backend systems, and sophisticated, clean interfaces.`,

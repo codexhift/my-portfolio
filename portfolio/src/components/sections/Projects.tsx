@@ -3,10 +3,32 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Ornament from '@/components/ui/Ornament';
-import { fadeSlideUp, staggerItem } from '@/lib/animations';
-import { projects } from '@/lib/data';
+import { fadeSlideUp, staggerChildren, staggerItem } from '@/lib/animations';
 
-type Project = (typeof projects)[number];
+const selectedWork = [
+  {
+    id: '01',
+    year: '2025',
+    category: 'Web3 Infrastructure',
+    title: 'Web3 Cloud Storage Protocol',
+    meta: 'Web3 • Open Source • Personal Project',
+    description:
+      'A decentralized storage experience designed around ownership, encrypted access, and wallet-based authentication. The project explores how cloud workflows can feel familiar while moving sensitive data handling closer to the user.',
+    technologies: ['Solidity', 'Node.js', 'AES-GCM', 'SIWE'],
+    href: 'https://aryadevweb.github.io/web3_cloud_storage/',
+  },
+  {
+    id: '02',
+    year: '2026',
+    category: 'System Architecture',
+    title: 'Headless School Storage Engine',
+    meta: 'API Platform • Internal Tooling • Product System',
+    description:
+      'An API-first file management engine built to support multi-platform clients, scoped organizational drives, and secure operational workflows. Its value sits in the architecture: clear access boundaries, async processing, and maintainable integrations.',
+    technologies: ['Laravel', 'PostgreSQL', 'Redis', 'Sanctum'],
+    href: 'https://github.com/codexhift/website-cloud-storage',
+  },
+];
 
 export default function Projects() {
   const ref = useRef<HTMLElement>(null);
@@ -19,95 +41,86 @@ export default function Projects() {
           variants={fadeSlideUp}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="mb-16 text-center md:mb-20"
+          className="mb-16 max-w-3xl md:mb-20"
         >
           <span className="mb-4 block font-cormorant-sc text-[0.65rem] uppercase tracking-[0.35em] text-[--ash]">
             Selected Work
           </span>
-          <h2 className="font-cormorant text-[clamp(2.5rem,5vw,4.35rem)] font-light leading-[1.06] text-[--ink]">
+          <h2 className="font-cormorant text-[clamp(2.6rem,5vw,4.6rem)] font-light leading-[1.04] text-[--ink]">
             Projects &amp; <em className="italic">Endeavours</em>
           </h2>
           <div className="mt-6">
-            <Ornament color="var(--ash)" lineWidth={70} />
+            <Ornament color="var(--ash)" lineWidth={70} center={false} />
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 border border-[--pearl] md:grid-cols-2">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} inView={inView} />
+        <motion.div
+          variants={staggerChildren}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="border-t border-[--pearl]"
+        >
+          {selectedWork.map((project, index) => (
+            <CaseStudy key={project.id} project={project} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project, index, inView }: { project: Project; index: number; inView: boolean }) {
-  const className = `group relative min-h-[560px] overflow-hidden p-7 sm:p-9 md:p-11 ${
-    index % 2 === 0 ? 'md:border-r md:border-[--pearl]' : ''
-  } ${index < projects.length - 1 ? 'border-b border-[--pearl] md:border-b-0' : ''}`;
+function CaseStudy({ project, index }: { project: (typeof selectedWork)[number]; index: number }) {
+  const reversed = index % 2 === 1;
 
   return (
     <motion.article
       variants={staggerItem}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      transition={{ delay: index * 0.12 }}
-      className={className}
+      className="group grid grid-cols-1 gap-8 border-b border-[--pearl] py-12 sm:py-14 lg:grid-cols-12 lg:gap-10 lg:py-16"
       aria-label={project.title}
     >
-      <motion.div
-        className="project-card-fill"
-        initial={{ scaleY: 0 }}
-        whileHover={{ scaleY: 1 }}
-        transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1] }}
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 flex h-full flex-col">
-        <span className="mb-8 font-cormorant text-[5.3rem] font-light leading-none text-[--pearl] transition-colors duration-500 group-hover:text-[--silver]">
+      <div className={`${reversed ? 'lg:col-start-9' : 'lg:col-start-1'} lg:col-span-2`}>
+        <span className="block font-cormorant text-[clamp(3rem,6vw,5.2rem)] font-light leading-none text-[--pearl] transition-colors duration-500 group-hover:text-[--silver]">
           {project.id}
         </span>
+      </div>
 
-        <span className="mb-3 font-cormorant-sc text-[0.6rem] uppercase tracking-[0.22em] text-[--silver] transition-colors duration-500 group-hover:text-[--platinum]">
+      <div className={`${reversed ? 'lg:col-start-1 lg:row-start-1' : 'lg:col-start-4'} lg:col-span-6`}>
+        <span className="mb-4 block font-cormorant-sc text-[0.6rem] uppercase tracking-[0.28em] text-[--ash]">
           {project.year} / {project.category}
         </span>
-
-        <h3 className="mb-4 font-cormorant text-[2rem] font-light leading-[1.12] text-[--ink] transition-colors duration-500 group-hover:text-[--platinum]">
+        <h3 className="mb-5 max-w-2xl font-cormorant text-[clamp(2rem,4vw,3.35rem)] font-light leading-[1.05] text-[--ink]">
           {project.title}
         </h3>
-
-        <p className="mb-7 flex-grow font-inter text-[0.92rem] font-light leading-[1.85] text-[--ash] transition-colors duration-500 group-hover:text-[--platinum]">
+        <p className="max-w-2xl font-inter text-[0.98rem] font-light leading-[1.85] text-[--smoke]">
           {project.description}
         </p>
+      </div>
 
-        <div className="mb-9 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+      <div className={`${reversed ? 'lg:col-start-9' : 'lg:col-start-10'} lg:col-span-3`}>
+        <span className="mb-5 block font-cormorant-sc text-[0.58rem] uppercase tracking-[0.24em] text-[--silver]">
+          {project.meta}
+        </span>
+        <div className="mb-8 flex flex-wrap gap-x-4 gap-y-2">
+          {project.technologies.map((technology) => (
             <span
-              key={tag}
-              className="border border-[--pearl] rounded-[3px] px-3 py-1.5 font-cormorant-sc text-[0.56rem] uppercase tracking-[0.18em] text-[--silver] transition-all duration-500 group-hover:border-[--ash] group-hover:text-[--platinum]"
+              key={technology}
+              className="font-cormorant-sc text-[0.58rem] uppercase tracking-[0.2em] text-[--ash]"
             >
-              {tag}
+              {technology}
             </span>
           ))}
         </div>
-
-        <div className="mt-auto flex flex-wrap items-center gap-4">
-          {project.links.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-[--pearl] bg-transparent rounded-[6px] px-4 py-2 font-cormorant-sc text-[0.6rem] uppercase tracking-[0.22em] text-[--smoke] transition-all duration-300 hover:border-[--platinum] hover:bg-[--platinum] hover:text-[--ink] group-hover:text-[--platinum] group-hover:border-[--ash] group-hover:hover:border-[--platinum] group-hover:hover:bg-[--platinum] group-hover:hover:text-[--ink]"
-            >
-              <span>{link.label}</span>
-              <svg width="10" height="10" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" strokeWidth="1" />
-              </svg>
-            </a>
-          ))}
-        </div>
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 font-cormorant-sc text-[0.62rem] uppercase tracking-[0.24em] text-[--ink] transition-opacity duration-300 hover:opacity-55"
+        >
+          <span>View Case Study</span>
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" strokeWidth="1" />
+          </svg>
+        </a>
       </div>
     </motion.article>
   );

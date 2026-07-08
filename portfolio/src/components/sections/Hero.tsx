@@ -58,7 +58,7 @@ export default function Hero() {
               <span className="block text-[clamp(3rem,11.5vw,5.2rem)] font-extralight tracking-tight text-[--ash]">
                 Angga{' '}
                 <span className="name-gradient-mask font-semibold italic tracking-normal">
-                  Arya
+                  Ariya
                 </span>
               </span>
               {/* Line 2 */}
@@ -77,7 +77,7 @@ export default function Hero() {
               style={{ fontSize: 'clamp(4rem, 5.6vw, 8rem)' }}
             >
               <span className="font-extralight tracking-tight text-[--ash]">Angga </span>
-              <span className="name-gradient-mask font-semibold italic tracking-normal">Arya</span>
+              <span className="name-gradient-mask font-semibold italic tracking-normal">Ariya</span>
               <span className="font-extralight tracking-tight text-[--ash]"> Saputra</span>
             </span>
 

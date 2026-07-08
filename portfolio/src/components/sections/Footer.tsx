@@ -19,7 +19,7 @@ export default function Footer() {
             className="font-cormorant-sc text-[0.82rem] tracking-[0.22em] uppercase text-[--ash]
               hover:text-[--platinum] transition-colors duration-300"
           >
-            {personal.nameShort}
+            {personal.brandingName}
           </a>
 
           {/* Copyright */}
